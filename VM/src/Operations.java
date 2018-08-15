@@ -29,9 +29,12 @@ public class Operations {
 			aux = 1;
 		}
 		
-		data.InsertAt(, data.PileAdress-1);
+		data.InsertAt(aux, data.PileAdress-1);
 		data.DecrementPileAdress();
 	}
+	
+	
+	
 	
 	
 	
