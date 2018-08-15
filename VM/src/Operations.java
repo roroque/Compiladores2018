@@ -33,6 +33,50 @@ public class Operations {
 		data.DecrementPileAdress();
 	}
 	
+	public void CME(Data data) {
+		int aux = 0;
+		if(data.Pile[data.PileAdress-1] < data.Pile[data.PileAdress]) {
+			aux = 1;
+		}
+		data.InsertAt(aux, data.PileAdress-1);
+		data.DecrementPileAdress();
+	}
+	
+	public void CEQ(Data data) {
+		int aux = 0;
+		if(data.Pile[data.PileAdress-1] == data.Pile[data.PileAdress]) {
+			aux = 1;
+		}
+		data.InsertAt(aux, data.PileAdress-1);
+		data.DecrementPileAdress();
+	}
+	
+	public void  CMEQ(Data data) {
+		int aux = 0;
+		if(data.Pile[data.PileAdress-1] <= data.Pile[data.PileAdress]) {
+			aux = 1;
+		}
+		data.InsertAt(aux, data.PileAdress-1);
+		data.DecrementPileAdress();
+	}
+	
+	public void START(Data data) {
+		data.PileAdress = -1;
+	}
+	
+	public void STR(int info, Data data) {
+		data.InsertAt(data.GetInfoAt(data.PileAdress), info);
+		data.DecrementPileAdress();
+	}
+	
+	public void JMPF(int info, Data data) {
+		if(data.GetInfoAt(data.PileAdress) == 0) {
+			data.SetInstructionAdress(info);
+		}else {
+			data.SetInstructionAdress(data.InstructionAdress+1);
+		}
+		data.DecrementPileAdress();
+	}
 	
 	
 	

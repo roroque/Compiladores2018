@@ -1,6 +1,8 @@
 
 public class Data {
 	
+	public int InstructionAdress;
+	
 	public int PileAdress;
 	
 	public int[] Pile;
@@ -26,5 +28,12 @@ public class Data {
 		PileAdress--;
 	}
 	
+	public void SetInstructionAdress(int value) {
+		InstructionAdress = value;
+	}
+	
+	public int GetInstructionAdress() {
+		return InstructionAdress;
+	}
 	
 }
