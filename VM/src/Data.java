@@ -10,6 +10,7 @@ public class Data {
 		Pile[index] = info;
 	}
 	
+	
 	public int GetInfoAt(int index) {
 		if(Pile.length < index) {
 			return Pile[index];

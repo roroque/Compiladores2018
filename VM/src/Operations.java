@@ -7,14 +7,31 @@ public class Operations {
 		data.InsertAt(info, data.PileAdress);
 	}
 	
+	public void LDV(int info , Data data) {
+		data.PileAdress += 1;
+		data.InsertAt(info, data.GetInfoAt(info));
+	}
+	
 	public void ADD(Data data) {
 		int aux = data.Pile[data.PileAdress-1] + data.Pile[data.PileAdress];
 		data.InsertAt(aux, data.PileAdress - 1);
 		data.DecrementPileAdress();
 	}
 	
+	public void SUB(Data data) {
+		int aux = data.Pile[data.PileAdress-1] - data.Pile[data.PileAdress];
+		data.InsertAt(aux, data.PileAdress - 1);
+		data.DecrementPileAdress();
+	}
+	
 	public void MULT(Data data) {
 		int aux = data.Pile[data.PileAdress-1] * data.Pile[data.PileAdress];
+		data.InsertAt(aux, data.PileAdress - 1);
+		data.DecrementPileAdress();
+	}
+	
+	public void DIVI(Data data) {
+		int aux = data.Pile[data.PileAdress-1]/data.Pile[data.PileAdress];
 		data.InsertAt(aux, data.PileAdress - 1);
 		data.DecrementPileAdress();
 	}
@@ -28,10 +45,11 @@ public class Operations {
 		if((data.Pile[data.PileAdress-1] == 1 || data.Pile[data.PileAdress] == 1)) {
 			aux = 1;
 		}
-		
 		data.InsertAt(aux, data.PileAdress-1);
 		data.DecrementPileAdress();
 	}
+	
+	
 	
 	
 	
