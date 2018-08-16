@@ -40,6 +40,21 @@ public class Operations {
 		data.InsertAt(0 - data.Pile[data.PileAdress], data.PileAdress);
 	}
 	
+	public void AND(Data data) {
+		int aux = 0;
+		if((data.Pile[data.PileAdress-1] == 1 && data.Pile[data.PileAdress] == 1)) {
+			aux = 1;
+		}
+		data.InsertAt(aux, data.PileAdress-1);
+		data.DecrementPileAdress();
+	}
+	
+	public void NEG(Data data) {
+		int aux = 0;
+	    aux = 1 - data.Pile[data.PileAdress];
+	    data.InsertAt(aux, data.PileAdress);
+	}
+	
 	public void OR(Data data) {
 		int aux = 0;
 		if((data.Pile[data.PileAdress-1] == 1 || data.Pile[data.PileAdress] == 1)) {
@@ -58,9 +73,27 @@ public class Operations {
 		data.DecrementPileAdress();
 	}
 	
+	public void CMA(Data data) {
+		int aux = 0;
+		if(data.Pile[data.PileAdress-1] > data.Pile[data.PileAdress]) {
+			aux = 1;
+		}
+		data.InsertAt(aux, data.PileAdress-1);
+		data.DecrementPileAdress();
+	}
+	
 	public void CEQ(Data data) {
 		int aux = 0;
 		if(data.Pile[data.PileAdress-1] == data.Pile[data.PileAdress]) {
+			aux = 1;
+		}
+		data.InsertAt(aux, data.PileAdress-1);
+		data.DecrementPileAdress();
+	}
+	
+	public void CDIF(Data data) {
+		int aux = 0;
+		if(data.Pile[data.PileAdress-1] != data.Pile[data.PileAdress]) {
 			aux = 1;
 		}
 		data.InsertAt(aux, data.PileAdress-1);
@@ -76,13 +109,30 @@ public class Operations {
 		data.DecrementPileAdress();
 	}
 	
+	public void  CMAQ(Data data) {
+		int aux = 0;
+		if(data.Pile[data.PileAdress-1] >= data.Pile[data.PileAdress]) {
+			aux = 1;
+		}
+		data.InsertAt(aux, data.PileAdress-1);
+		data.DecrementPileAdress();
+	}
+	
 	public void START(Data data) {
 		data.PileAdress = -1;
+	}
+	
+	public void HLT(Data data) {
+		data.PileAdress = 0; //fim da execução
 	}
 	
 	public void STR(int info, Data data) {
 		data.InsertAt(data.GetInfoAt(data.PileAdress), info);
 		data.DecrementPileAdress();
+	}
+	
+	public void JMP(int info, Data data) {
+		data.SetInstructionAdress(info);
 	}
 	
 	public void JMPF(int info, Data data) {
@@ -94,14 +144,6 @@ public class Operations {
 		data.DecrementPileAdress();
 	}
 	
+	public void NUL(int info, Data data) {}
 	
-	
-	
-	
-	
-	
-	
-	
-	
-
 }
