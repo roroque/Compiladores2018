@@ -1,7 +1,6 @@
 
 public class Operations {
 	
-	
 	public void LDC(int info , Data data) {
 		data.PileAdress += 1;
 		data.InsertAt(info, data.PileAdress);
@@ -144,6 +143,35 @@ public class Operations {
 		data.DecrementPileAdress();
 	}
 	
-	public void NUL(int info, Data data) {}
+	public void NUL(Data data) {}
 	
+	public void PRN(Data data) {
+		int info = data.DecrementPileAdress();
+		data.GetInfoAt(info);
+	}
+	
+	public void DALLOC(int p1, int p2, Data data) {
+		for(int i = (p2-1); i>=0; i--){
+			data.Pile[p1+i] = data.Pile[data.PileAdress];
+			data.DecrementPileAdress();
+		}
+	}
+	
+	public void CALL(Data data, int t) {
+		int i=0;
+		int info = data.IncrementPileAdress();
+		data.Pile[info] = i++;
+		i=t;
+	}
+	
+	public void RETURN(Data data) {
+		int info = data.DecrementPileAdress();
+		int i = data.Pile[info];
+	}
 }
+	
+	
+	
+	
+	
+    

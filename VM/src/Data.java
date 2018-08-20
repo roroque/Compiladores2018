@@ -12,7 +12,6 @@ public class Data {
 		Pile[index] = info;
 	}
 	
-	
 	public int GetInfoAt(int index) {
 		if(Pile.length < index) {
 			return Pile[index];
@@ -21,12 +20,12 @@ public class Data {
 	}
 	
 	
-	public void IncrementPileAdress() {
-		PileAdress++;	
+	public int IncrementPileAdress() {
+		return PileAdress++;	
 	}
 	
-	public void DecrementPileAdress() {
-		PileAdress--;
+	public int DecrementPileAdress() {
+		return PileAdress--;
 	}
 	
 	public void SetInstructionAdress(int value) {
