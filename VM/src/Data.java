@@ -1,9 +1,9 @@
 
 public class Data {
 	
-	public int InstructionAdress;
+	public int InstructionAddress;
 	
-	public int PileAdress;
+	public int PileAddress;
 	
 	public int[] Pile;
 	
@@ -20,20 +20,20 @@ public class Data {
 	}
 	
 	
-	public int IncrementPileAdress() {
-		return PileAdress++;	
+	public int IncrementPileAddress() {
+		return PileAddress++;	
 	}
 	
-	public int DecrementPileAdress() {
-		return PileAdress--;
+	public int DecrementPileAddress() {
+		return PileAddress--;
 	}
 	
 	public void SetInstructionAdress(int value) {
-		InstructionAdress = value;
+		InstructionAddress = value;
 	}
 	
-	public int GetInstructionAdress() {
-		return InstructionAdress;
+	public int GetInstructionAddress() {
+		return InstructionAddress;
 	}
 	
 }
