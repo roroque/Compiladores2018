@@ -174,10 +174,10 @@ public class Operations {
 	}
 	
 	public void CALL(int info, Data data) { //manter padrao por favor: (int info , Data data)
-		int info=0;// essa parte incorreta
-		int i = data.IncrementPileAddress(); //essa parte esta correta
-		data.Pile[info] = i++; // substituir i++ por data.InstructionAddress + 1
-		i=t;// substituir por: data.SetInstructionAdress(t);
+		//int info=0;// essa parte incorreta
+		//int i = data.IncrementPileAddress(); //essa parte esta correta
+		//data.Pile[info] = i++; // substituir i++ por data.InstructionAddress + 1
+		//i=t;// substituir por: data.SetInstructionAdress(t);
 		//esclarecimento, assim como nos jumps i corresponde ao instruction address
 		
 		
