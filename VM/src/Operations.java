@@ -122,7 +122,7 @@ public class Operations {
 	}
 	
 	public void HLT(Data data) {
-		data.PileAdress = 0; //fim da execução
+		data.PileAdress = 0; 
 	}
 	
 	public void STR(int info, Data data) {
