@@ -7,8 +7,8 @@ public class Operations {
 	}
 	
 	public void LDV(int info , Data data) {
-		data.PileAddress += 1;
-		data.InsertAt(info, data.GetInfoAt(info)); //corrigir, voce esta fazendo M[n] = M[n] e o correto seria M[S] = M[n]
+		int aux = data.PileAddress += 1;
+		data.InsertAt(aux, data.GetInfoAt(info)); 
 	}
 	
 	public void ADD(Data data) {
@@ -122,8 +122,7 @@ public class Operations {
 	}
 	
 	public void HLT(Data data) {
-		//incorreto essa instrucao nao modifica nenhuma variavel
-		//data.PileAdress = 0; //fim da execução
+		data.PileAddress = 0; 
 	}
 	
 	public void STR(int info, Data data) {
@@ -151,12 +150,10 @@ public class Operations {
 		data.InsertAt(info, data.PileAddress);
 	}
 	
-	public void PRN(Data data) {//modificar funcao para int para retornar o valor que deve ser impresso
-		int info = data.DecrementPileAddress();// isso aqui se encontra bem incorreto
-		data.GetInfoAt(info);//logo essa informacao se encontra incorreta
-		//seguir essa ordem
-		//pegar a informacao que se encontra no topo da pilha (nao eh necessario decrementar o topo dela) e armazena-la em um auxiliar
-		//decrementar o pile adress pela funcao
+	public int PRN(int info, Data data) {
+		data.InsertAt(info, data.GetInfoAt(info));
+		data.PileAddress -= 1;
+		return 0;
 	}
 	
 	public void ALLOC(int p1, int p2, Data data) {
@@ -173,13 +170,11 @@ public class Operations {
 		}
 	}
 	
-	public void CALL(int info, Data data) { //manter padrao por favor: (int info , Data data)
-		//int info=0;// essa parte incorreta
-		//int i = data.IncrementPileAddress(); //essa parte esta correta
-		//data.Pile[info] = i++; // substituir i++ por data.InstructionAddress + 1
-		//i=t;// substituir por: data.SetInstructionAdress(t);
-		//esclarecimento, assim como nos jumps i corresponde ao instruction address
-		
+
+	public void CALL(int info, Data data) { 
+		int i = data.IncrementPileAddress(); 
+		data.Pile[info] = data.InstructionAddress + 1; 
+		data.SetInstructionAdress(info);
 		
 	}
 	
@@ -189,8 +184,3 @@ public class Operations {
 	}
 }
 	
-	
-	
-	
-	
-    
