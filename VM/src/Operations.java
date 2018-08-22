@@ -7,8 +7,8 @@ public class Operations {
 	}
 	
 	public void LDV(int info , Data data) {
-		data.PileAddress += 1;
-		data.InsertAt(info, data.GetInfoAt(info)); //corrigir, voce esta fazendo M[n] = M[n] e o correto seria M[S] = M[n]
+		int aux = data.PileAddress += 1;
+		data.InsertAt(aux, data.GetInfoAt(info)); 
 	}
 	
 	public void ADD(Data data) {
@@ -122,7 +122,7 @@ public class Operations {
 	}
 	
 	public void HLT(Data data) {
-		data.PileAdress = 0; 
+		data.PileAddress = 0; 
 	}
 	
 	public void STR(int info, Data data) {
@@ -150,8 +150,10 @@ public class Operations {
 		data.InsertAt(info, data.PileAddress);
 	}
 	
-	public int PRN(Data data) {
-		return;
+	public int PRN(int info, Data data) {
+		data.InsertAt(info, data.GetInfoAt(info));
+		data.PileAddress -= 1;
+		return 0;
 	}
 	
 	public void ALLOC(int p1, int p2, Data data) {
@@ -171,7 +173,7 @@ public class Operations {
 	public void CALL(int info, Data data) { 
 		int i = data.IncrementPileAddress(); 
 		data.Pile[info] = data.InstructionAddress + 1; 
-		data.SetInstructionAdress(t);
+		data.SetInstructionAdress(info);
 		
 	}
 	
