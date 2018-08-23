@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 
+import java.io.File;
+
 import javax.swing.JFileChooser;
 
 
@@ -212,6 +214,12 @@ public class VM extends javax.swing.JFrame {
         JFileChooser fc = new JFileChooser();
         fc.setFileSelectionMode(JFileChooser.FILES_ONLY);  // só deixa selecionar apenas arquivos
         fc.showOpenDialog(this);
+        
+        File f = fc.getSelectedFile();
+        if(f != null) {
+        	String path = f.getAbsolutePath();
+        	ReadTextFile(path);	
+        }
     }                                          
 
     /**
@@ -263,7 +271,7 @@ public class VM extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
-    private javax.swing.JScrollPane jScrollPane5;
+    private javax.swing.JScrollPane jScrollPane5;	
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
@@ -275,7 +283,7 @@ public class VM extends javax.swing.JFrame {
 	private void ReadTextFile(String FilePath) {
 		
 		Reader r = new Reader();
-		
+		r.ReadInstructions(FilePath);
 		
 		
 	}
