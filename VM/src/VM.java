@@ -49,6 +49,9 @@ public class VM {
 		frame.setBounds(100, 100, 1200, 900);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
+		Data myData = new Data();
+
+		
 		JMenuBar menuBar = new JMenuBar();
 		frame.setJMenuBar(menuBar);
 		JMenu mnNewMenu = new JMenu("File");
@@ -75,11 +78,13 @@ public class VM {
 		        }
 			}
 		});
-		mntmSelectfile.setForeground(Color.LIGHT_GRAY);
+		mntmSelectfile.setForeground(Color.BLACK);
 		mnNewMenu.add(mntmSelectfile);
 	}
 	
 	private void ReadTextFile(String FilePath) {
+		
+		Reader r = new Reader();
 		
 		
 		
