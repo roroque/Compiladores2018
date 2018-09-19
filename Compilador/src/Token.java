@@ -40,9 +40,5 @@ public class Token {
 		Linha = 0;
 		Valido = false;
 	}
-	
-	
-	
-	
 
 }

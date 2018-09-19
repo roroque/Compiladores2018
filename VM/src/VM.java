@@ -5,6 +5,7 @@
  */
 
 import java.io.File;
+import java.io.Reader;
 
 import javax.swing.JFileChooser;
 
@@ -281,9 +282,6 @@ public class VM extends javax.swing.JFrame {
     // End of variables declaration              
     
 	private void ReadTextFile(String FilePath) {
-		
-		Reader r = new Reader();
-		r.ReadInstructions(FilePath);
 		
 		
 	}
