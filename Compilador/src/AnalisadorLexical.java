@@ -11,7 +11,7 @@ public class AnalisadorLexical {
 	Erro erro = new Erro();
 
 	public AnalisadorLexical(String urlArquivo) throws Exception {
-		
+
 		listaDeTokens = new Vector<Token>();
 		Token token = null;
 
@@ -69,7 +69,6 @@ public class AnalisadorLexical {
 			return trataOperadorAritmético();
 		if (caracter == '>' || caracter == '<' || caracter == '=' || caracter == '!')
 			return trataOperadorRelacional();
-
 		return trataPontuacao();
 	}
 
@@ -82,7 +81,35 @@ public class AnalisadorLexical {
 	}
 
 	private Token trataOperadorRelacional() {
-		// TODO Auto-generated method stub
+		String operador = "" + caracter;
+		if (caracter == '=') {
+			lerCaracter();
+			return new Token("sig", operador, linha);
+		}
+		if (caracter == '>') {
+			lerCaracter();
+			if (caracter == '=') {
+				operador = operador + caracter;
+				lerCaracter();
+				return new Token("smaiorig", operador, linha);
+			}
+			return new Token("smaior", operador, linha);
+		}
+		if (caracter == '<') {
+			lerCaracter();
+			if (caracter == '=') {
+				operador = operador + caracter;
+				lerCaracter();
+				return new Token("smenorig", operador, linha);
+			}
+			return new Token("smenor", operador, linha);
+		}
+		lerCaracter();
+		if (caracter == '=') {
+			operador = operador + caracter;
+			lerCaracter();
+			return new Token("sdif", operador, linha);
+		}
 		return null;
 	}
 
@@ -92,16 +119,17 @@ public class AnalisadorLexical {
 		if (caracter == '+') {
 
 			lerCaracter();
-			return new Token(/* "smais", atribuicao, linha */); // tirar comentário quando a classe token estiver pronta
+			return new Token("smais", atribuicao, linha); // tirar comentário quando a classe token estiver pronta
 		} else if (caracter == '-') {
 
 			lerCaracter();
-			return new Token(/* "smenos", atribuicao, linha */); // tirar comentário quando a classe token estiver													// pronta
+			return new Token("smenos", atribuicao, linha); // tirar comentário quando a classe token estiver //
+															// pronta
 		}
 
 		else {
 			lerCaracter();
-			return new Token(/* "smult", atribuicao, linha */); // tirar comentário quando a classe token estiver pronta
+			return new Token("smult", atribuicao, linha); // tirar comentário quando a classe token estiver pronta
 		}
 	}
 
@@ -112,14 +140,63 @@ public class AnalisadorLexical {
 		if (caracter == '=') {
 			atribuicao = atribuicao + '=';
 			lerCaracter();
-			return new Token(/* "sdoispontos", atribuicao, linha */); // tirar comentário quando a classe token estiver
-																		// pronta
+			return new Token("sdoispontos", atribuicao, linha); // tirar comentário quando a classe token estiver
+																// pronta
 		}
-		return new Token(/* "sdoispontos", atribuicao, linha */);
+		return new Token("sdoispontos", atribuicao, linha);
 	}
 
 	private Token trataIdentificadorEPalavraReservada() {
-		// TODO Auto-generated method stub
+		String id = "";
+		do {
+			id = id + caracter;
+			lerCaracter();
+
+		} while (Character.isDigit(caracter) || Character.isLetter(caracter));
+
+		switch (id) {
+		case "programa":
+			return new Token( "sprograma", id, linha );
+		case "inicio":
+			return new Token( "sinicio", id, linha );
+		case "fim":
+			return new Token( "sfim", id, linha );
+		case "procedimento":
+			return new Token( "sprocedimento", id, linha );
+		case "funcao":
+			return new Token( "sfuncao", id, linha);
+		case "se":
+			return new Token( "sse", id, linha );
+		case "entao":
+			return new Token( "sentao", id, linha );
+		case "senao":
+			return new Token( "ssenao", id, linha );
+		case "enquanto":
+			return new Token( "senquanto", id, linha );
+		case "faca":
+			return new Token( "sfaca", id, linha );
+		case "escreva":
+			return new Token( "sescreva", id, linha );
+		case "leia":
+			return new Token( "sleia", id, linha );
+		case "var":
+			return new Token( "svar", id, linha );
+		case "inteiro":
+			return new Token( "sinteiro", id, linha );
+		case "booleano":
+			return new Token( "sbooleano", id, linha );
+		case "identificador":
+			return new Token( "sidentificador", id, linha );
+		case "div":
+			return new Token( "sdiv", id, linha );
+		case "e":
+			return new Token( "se", id, linha );
+		case "ou":
+			return new Token( "sou", id, linha );
+		case "nao":
+			return new Token( "snao", id, linha );
+		}
+
 		return null;
 	}
 
@@ -127,25 +204,25 @@ public class AnalisadorLexical {
 		String atribuicao = "" + caracter;
 		if (caracter == ';') {
 			lerCaracter();
-			return new Token(/*"sponto_virgula", atribuicao, linha*/);
+			return new Token("sponto_virgula", atribuicao, linha);
 		}
 		if (caracter == '(') {
 			lerCaracter();
-			return new Token(/*"sabre_parenteses", atribuicao, linha*/);
+			return new Token("sabre_parenteses", atribuicao, linha);
 		}
 		if (caracter == ')') {
 			lerCaracter();
-			return new Token(/*"sfecha_parenteses", atribuicao, linha*/);
+			return new Token("sfecha_parenteses", atribuicao, linha);
 		}
 		if (caracter == ',') {
 			lerCaracter();
-			return new Token(/*"svirgula", atribuicao, linha*/);
+			return new Token("svirgula", atribuicao, linha);
 		}
 		if (caracter == '.') {
 			lerCaracter();
-			return new Token(/*"sponto", atribuicao, linha*/);
+			return new Token("sponto", atribuicao, linha);
 		}
-		
+
 		return null;
 	}
 
@@ -155,8 +232,7 @@ public class AnalisadorLexical {
 			num = num + caracter;
 			lerCaracter();
 		} while (Character.isDigit(caracter));
-		return new Token(/* "snumero", num, linha */); // quando estiver com os parametros corretos na classe token, é
-														// só tirar o comentário
+		return new Token("snumero", num, linha);
 
 	}
 
