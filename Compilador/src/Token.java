@@ -1,3 +1,4 @@
+
 public class Token {
 	
     private final String simbolo;
@@ -22,7 +23,7 @@ public class Token {
     }
     
     public String toString(){
-        return "Símbolo\t: "+simbolo+"\nLexema\t: "+lexema+"\nLinha\t: "+linha;
+        return "SÃ­mbolo\t: "+simbolo+"\nLexema\t: "+lexema+"\nLinha\t: "+linha;
     }
     public static int simboloToCode(String simbolo)
     {

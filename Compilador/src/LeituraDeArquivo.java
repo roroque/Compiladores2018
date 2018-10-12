@@ -1,16 +1,18 @@
+//classe com a função de ler um arquivo fonte
+
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
 
-public class LeitorDeArquivo {
+public class LeituraDeArquivo {
     private int caracter;
     InputStreamReader leituracaracteres;
 
-    public LeitorDeArquivo(String path) throws IOException {
-        FileInputStream abertura = new FileInputStream(path); 
-        this.leituracaracteres = new InputStreamReader(abertura); 
+    public LeituraDeArquivo(String path) throws IOException {
+        FileInputStream abertura = new FileInputStream(path); //abertura seria o objeto responsável pela abertura do arquivo
+        this.leituracaracteres = new InputStreamReader(abertura); //leitura de caracteres
     }
 
     public int leituraCaracter()
@@ -19,7 +21,7 @@ public class LeitorDeArquivo {
         {
             if(this.caracter != -1)
             {
-                this.caracter = leituracaracteres.read(); //retorna um inteiro que representa o caracter
+                this.caracter = leituracaracteres.read(); //método read que retorna um inteiro que representa o caracter 
                 return caracter;
             }
             else
